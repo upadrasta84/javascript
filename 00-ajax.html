@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+    "http://www.w3.org/TR/html4/strict.dtd"
+    >
+<html lang="en">
+<head>
+    <title>First Ajax</title>
+    <script language="javascript" type="text/javascript">
+    var xmlhttp;
+    function loadDoc() {
+        
+  const xhttp = new XMLHttpRequest();
+  xhttp.onload = function() {
+    document.getElementById("demo").innerHTML = this.responseText;
+    }
+  xhttp.open("GET", "ajax_info.txt", true);
+  xhttp.send();
+}
+
+    function getNum()
+    {
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = callback;
+        
+        xmlhttp.open("GET", "00-ajax.php", true);
+        xmlhttp.send();
+    }
+    
+    //When Information comes back from the server
+    function callback()
+    {
+        console.log("Ready State: " + xmlhttp.readyState + "\nStatus" + xmlhttp.status);
+        if(xmlhttp.readyState==4 && xmlhttp.status==200)
+        {
+            document.getElementById('result').innerHTML = xmlhttp.responseText;
+        }
+    }
+    
+    </script>
+</head>
+<body>
+    <div id="result">
+    </div>
+    
+    <input type="button" value="Get Random Number" onclick="getNum()"/>
+
+    
+<div id="demo">
+    <h2>Let AJAX change this text</h2>
+    <button type="button" onclick="loadDoc()">Change Content</button>
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Your description here">
+    <meta name="author" content="Your Name">
+    <title>Learning jQuery</title>
+	<!-- CSS -->
+    <link href="css/basic-page.css" rel="stylesheet" />
+	<!-- jQuery -->
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="input">
+		<ol>
+			<li id="test1"></li>
+			<li></li>
+			<li></li>
+			<li class="other"></li>
+			<li class="other" id="test5"></li>
+		</ol>	
+	</div>
+
+	<p>Here is the HTML:</p>
+	<pre id="html-output"></pre>
+	
+	<p>Here is the Text:</p>
+	<pre id="text-output"></pre>
+	
+</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("li").text("This is repeating text");
+		$(".other").text("This text <em>may</em> appear more than once");
+		$("#test5").html("This text does <em>NOT</em> repeat");
+		$("#test1").text("This is a test using $");
+		$("#html-output").text($("#input").html());
+		$("#text-output").text($("#input").text());
+	});
+</script>

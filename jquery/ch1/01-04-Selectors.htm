@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Your description here">
+    <meta name="author" content="Your Name">
+    <title>Learning jQuery</title>
+	<!-- CSS -->
+    <link href="css/basic-page.css" rel="stylesheet" />
+	<!-- jQuery -->
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div id="group-1">
+		<ol>
+			<li>First</li>
+			<li>Second</li>	
+			<li>Third</li>
+			<li>Fourth</li>
+			<li>Fifth</li>
+		</ol>
+	</div>
+	<div id="group-2">
+		<ol>
+			<li>First</li>
+			<li>Second</li>	
+			<li>Third</li>
+			<li>Fourth</li>
+			<li>Fifth</li>
+		</ol>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#group-1 li:first").append("!");
+		$("#group-2 ol li").first().html("<em>First</em>");
+		$("#group-2 li:last").html("<em>Last!</em>");
+		$("#group-2 li:gt(2)").append("(>3)");
+	});
+</script>

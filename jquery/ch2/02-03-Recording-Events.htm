@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Your description here">
+    <meta name="author" content="Your Name">
+    <title>Learning jQuery</title>
+	<!-- CSS -->
+    <link href="css/basic-page.css" rel="stylesheet" />
+	<!-- jQuery -->
+	<script src="js/jquery.min.js" type="text/javascript"></script>
+</head>
+<body>
+	<div class="cursor hidden"></div>
+	<div>
+		<button type="button" id="record">Record</button>
+		<button type="button" id="play">Play</button>
+	</div>
+	<div>
+		<img src="img/jquery_docs.png" />
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+
+	var recording = {
+		data : [], 
+		recordMove : function(pageX, pageY) {
+			recording.data.push({x : pageX, y : pageY});
+		}, 
+		currentMove : 0, 
+		play : function() {
+			if ( recording.currentMove < recording.data.length ) {
+				var coordinates = recording.data[recording.currentMove];
+				$(".cursor").css({
+					top : coordinates.y, 
+					left: coordinates.x
+				}).show();
+				recording.currentMove++;
+				setTimeout(recording.play, 10);
+			}
+		}
+	};
+
+	$(document).ready(function() {
+		$("#record").click(function() {
+			$(".cursor").hide();
+			$(document).mousemove(function(e) {
+				recording.recordMove(e.pageX, e.pageY);
+			});
+		});
+		$("#play").click(function() {
+			$(document).off("mousemove");
+			recording.play();
+		});
+	});
+</script>
